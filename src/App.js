@@ -46,11 +46,28 @@ function reducer(state, action) {
     case "payLoan":
       return {
         ...state,
-        loan: 0,
+        loan:
+          state.loan >= action.payload && state.balance >= action.payload
+            ? state.loan - action.payload
+            : state.loan,
         balance:
-          state.balance >= action.payload && state.loan > action.payload
+          state.loan >= action.payload && state.balance >= action.payload
             ? state.balance - action.payload
             : state.balance,
+      };
+    case "close":
+      return {
+        // initialState,
+        balance:
+          state.balance !== initialState.balance
+            ? state.balance
+            : initialState.balance,
+        loan: state.loan !== initialState.loan ? state.loan : initialState.loan,
+        isActive:
+          state.balance === initialState.balance &&
+          state.loan === initialState.loan
+            ? false
+            : true,
       };
     default:
       throw new Error("Unknown Action");
@@ -116,7 +133,13 @@ export default function App() {
         >
           Pay loan
         </button>
-        <button onClick={() => {}} disabled={!isActive} className="button">
+        <button
+          onClick={() => {
+            dispatch({ type: "close" });
+          }}
+          disabled={!isActive}
+          className="button"
+        >
           Close account
         </button>
       </div>
