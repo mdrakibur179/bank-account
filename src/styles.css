@@ -1,0 +1,46 @@
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.header {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  place-items: center;
+  flex-direction: column;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: default;
+  background-color: gray;
+}
+.button:disabled:hover {
+  background-color: gray;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.balance-display {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
